@@ -5,6 +5,7 @@ import Header from "./ui/Header";
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error";
 import Home from "./ui/Home";
+import Menu from "./features/menu/Menu";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path: "/menu",
+        element: <Menu />,
+        loader: menuLoader
+      },
+      {
+        path: "*",
+        element: <Error statusCode={404} />,
+      },
     ],
   },
 ]);
@@ -22,7 +32,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      {/* <Header /> */}
       <Home />
     </div>
   );
