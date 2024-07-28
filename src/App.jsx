@@ -1,11 +1,9 @@
-import { useState } from "react";
-import "./App.css";
-import { createBrowserRouter } from "react-router-dom";
-import Header from "./ui/Header";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error";
 import Home from "./ui/Home";
-import Menu from "./features/menu/Menu";
+import Menu, { loader as menuLoader } from "./features/menu/Menu";
+import Cart from "./features/cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +17,11 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu />,
-        loader: menuLoader
+        loader: menuLoader,
+        errorElement: <Error />,
       },
+      { path: "/order/new", element: <Cart /> },
+      { path: "/checkout", element: <CreateOrder />, action: createOrderAction },
       {
         path: "*",
         element: <Error statusCode={404} />,
