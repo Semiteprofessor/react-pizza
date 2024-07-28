@@ -15,7 +15,7 @@ const Menu = () => {
   );
 };
 
-const loader = async () => {
+export const loader = async () => {
   const menu = await getMenu();
   return menu;
 };
